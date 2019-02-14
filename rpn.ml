@@ -2,7 +2,7 @@
 
 let rpn_evl s =
   let calculate op = function
-    | a::b::c -> (op b a)::c (* Use the OCaml native operations *)
+    | a::b::c -> (op b a)::c (* Use the OCaml native operations to do math *)
     | _ -> invalid_arg "Not a valid expression" in
       (* Match the operations and call calculate function *)
       let operators o = function 
@@ -11,8 +11,8 @@ let rpn_evl s =
         | "+" -> calculate( +. ) o
         | "-" -> calculate( -. ) o
         | "^" -> calculate( ** ) o
-        | str -> (float_of_string str) :: o in
-        let list = Str.split(Str.regexp " +") s in (* Turn the input string to a list of strings *) 
+        | str -> (float_of_string str) :: o in (* Convert string to float where necessary *)
+        let list = Str.split(Str.regexp " +") s in (* Convert the input string to a list of strings *) 
           List.fold_left operators [] list (* Operate on list pre-application and store in accumulator *)
 
 (* Printing the result and calling the evaluation function *)

@@ -1,0 +1,25 @@
+README
+
+Chad Wishner 6631-5393
+
+Run with Commands:
+	ocamlc str.cma rpn.ml
+	./rpn
+
+To Stop Calculator:
+	stop
+
+What Works:
+	All binary operations (+,-,*,/,^) are supported for floats with max value of 340282300000000000000000000000000000000 and min value of -340282300000000000000000000000000000000
+
+Assumptions:
+	I assume the user knows proper PRN format
+	The user has properly installed OCaml
+
+References:
+	https://ocaml.org/learn/tutorials if_statements_loops_and_recursion.html
+	https://www.youtube.com/watch?v=Gi58t_pgfJY&list=PLea0WJq13cnCef-3KSU3qWFge9OGUlKx1
+	https://caml.inria.fr/pub/docs/manual-ocaml/libref/index.html
+	https://www.cs.cornell.edu/courses/cs3110/2014sp/recitations/5/folding.html
+	https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm#
+	https://en.wikipedia.org/wiki/Reverse_Polish_notation

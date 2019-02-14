@@ -2,8 +2,9 @@
 
 let rpn_evl s =
   let calculate op = function
-    | a::b::c -> (op b a)::c
+    | a::b::c -> (op b a)::c (* Use the OCaml native operations *)
     | _ -> invalid_arg "Not a valid expression" in
+      (* Match the operations and call calculate function *)
       let operators o = function 
         | "*" -> calculate( *. ) o
         | "/" -> calculate( /. ) o
@@ -11,43 +12,20 @@ let rpn_evl s =
         | "-" -> calculate( -. ) o
         | "^" -> calculate( ** ) o
         | str -> (float_of_string str) :: o in
-        let list = Str.split(Str.regexp " +") s in  
-          List.fold_left operators [] list
+        let list = Str.split(Str.regexp " +") s in (* Turn the input string to a list of strings *) 
+          List.fold_left operators [] list (* Operate on list pre-application and store in accumulator *)
 
-let input = read_line();;
-(*let quit = ref false in*)
-(*while true do()
-  let input = read_line();;
-  print_string("Result: ");;
-  print_float(List.hd(rpn_evl input));;
+(* Printing the result and calling the evaluation function *)
+let do_stuff input = 
+  print_string("Result: "); 
+  print_float(List.hd(rpn_evl input)); (* Print the first element in the list after doing evaluations on the string input *)
   print_newline();;
-done;;*)
 
-let rec exe =
-    (*let input = read_line();;*)
-    print_string("Result: ");;
-    print_float(List.hd(rpn_evl input));;
-    print_newline();;
-    exe;;
+(* Recursive function to take recurring input *)
+let rec exe () =  
+  match read_line () with
+    | "stop" -> print_endline "Ending Program" (* End Program *)
+    | _ as input -> let () = do_stuff input in exe();; (* Take input in, Call function for printing, recursively call exe *)   
 
-exe;;
-
-(*let math op = function
-  | a::b::c -> (op b a)::c
-  | _ -> invalid_arg "Not a valid expression" *)
-
-(*let operators o = function 
-  (*if op = "*" then math( *. ) o
-  else if op = "/" then math( /. ) o
-  else if op = "+" then math( +. ) o
-  else if op = "-" then math( -. ) o
-  else if op = "^" then math( ** ) o
-  else if str then (float_of_string str) :: o
-  (*else ->invalid_arg "User inputted an unrecognized character"*)*)
-
-  | "*" -> math( *. ) o
-  | "/" -> math( /. ) o
-  | "+" -> math( +. ) o
-  | "-" -> math( -. ) o
-  | "^" -> math( ** ) o
-  | str -> (float_of_string str) :: o *)
+(* Start Program*)
+exe ();;

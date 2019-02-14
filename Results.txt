@@ -1,0 +1,20 @@
+Result: 4.
+Result: 0.
+Result: 4.
+Result: 1.
+Result: 4.
+Result: 531441.
+Result: -1.
+Result: 0.833333333333
+Result: 10
+Result: Fatal error: exception Invalid_argument("Not a valid expression")
+Result: 0
+Result: Fatal error: exception Failure("float_of_string")
+Result: 3.402823e+38
+Result: inf
+Result: 0.1353
+Result: -3.
+Result: 0.22
+Result: -0.22
+Result: 0.
+Result: -3.402823e+38
